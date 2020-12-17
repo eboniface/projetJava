@@ -18,6 +18,8 @@ public class ServletListeArticle extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+
         ServletContext context = this.getServletContext();
         HashMap<Long,Article> listeArticle = new HashMap<>();
 

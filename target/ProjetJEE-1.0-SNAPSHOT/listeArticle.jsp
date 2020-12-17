@@ -1,5 +1,7 @@
 <%@ page import="com.example.ProjetJEE.Article" %>
-<%@ page import="java.util.ArrayList" %><%--
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.Map" %><%--
   Created by IntelliJ IDEA.
   User: edbon
   Date: 17/12/2020
@@ -12,15 +14,15 @@
     <title>Title</title>
 </head>
 <body>
-<%ArrayList<Article> articleListe = (ArrayList<Article>) request.getAttribute("listeArticle");%>
+<%HashMap<Long,Article> articleListe = (HashMap<Long,Article>) request.getAttribute("listeArticle");%>
 <div align="center">
     <table border="1">
         <thead>
         <th>Code Barre</th><th>Libelle de l'article</th><th>Prix HT</th><th>Taux de TVA</th>
         </thead>
-        <% for (Article article:articleListe) {%>
+        <% for (Map.Entry<Long,Article> article: articleListe.entrySet()) {%>
         <tr>
-            <th><%=article.getCodeBarre() %></th><th><%=article.getLibelle() %></th><th><%=article.getPrixHT() %></th><th><%=article.getTauxTVA() %></th>
+            <th><%=article.getValue().getCodeBarre() %></th><th><%=article.getValue().getLibelle() %></th><th><%=article.getValue().getPrixHT() %></th><th><%=article.getValue().getTauxTVA() %></th><th><a href="<%=request.getContextPath()%>/ServletSuppressionArticle?codeBarre=<%=article.getValue().getCodeBarre()%>">Supprimer</a> </th>
         </tr>
         <% } %>
     </table>
