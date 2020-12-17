@@ -4,35 +4,36 @@
 
 <head>
     <title>Supermarché - Ajout d'article</title>
+    <style><%@include file="/WEB-INF/css/ajoutArticle.scss"%></style>
+
 </head>
 <jsp:include page="header.jsp"/>
 
-<body>
-<div align="center">
-    <h1>Enregistrer un Article</h1>
-    <br>
-    <br>
-    <br>
 
-    <form method="POST">
-        Code barre : <input type="number" name="codeBarre" placeholder="Entrez un codeBarre">
-        Réference : <input type="text" name="reference" placeholder="Entrez une reference"><br><br>
-        Libelle : <input type="text" name="libelle" placeholder="Entrez un libelle">
-        Prix HT : <input type="number" name="prixHT" placeholder="Entrez un prix HT"><br><br>
-
-        Taux TVA : <select name="tauxTVA">
-        <% for (int taux: Article.getValeurTauxTVA()) { %>
-            <option value="<%=taux%>"> <%=taux%></option>
-       <% } %>
-    </select>
-
-
-
-
-
-
-        <button type="submit">Valider</button>
+<div class="container">
+    <form id="contact" action="" method="post">
+        <h3>ENREGISTRER UN ARTICLE</h3>
+            <fieldset>
+            <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" name="codeBarre" placeholder="Entrez un codeBarre" tabindex="1" required autofocus>
+        </fieldset>
+        <fieldset>
+            <input type="text" name="reference" placeholder="Entrez une reference" tabindex="2" required>
+        </fieldset>
+        <fieldset>
+            <input type="text" name="libelle" placeholder="Entrez un libelle" tabindex="3" required>
+        </fieldset>
+        <fieldset>
+            <input type="text" oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" name="prixHT" placeholder="Entrez un prix HT" tabindex="4" required>
+        </fieldset>
+        <fieldset>
+            TVA: <select name="tauxTVA">
+                <% for (int taux: Article.getValeurTauxTVA()) { %>
+                <option value="<%=taux%>"> <%=taux%></option>
+                <% } %>
+            </select>
+        </fieldset>
+        <fieldset>
+            <button name="submit" type="submit" id="contact-submit" data-submit="...Sending">Ajouter</button>
+        </fieldset>
     </form>
 </div>
-</body>
-</html>

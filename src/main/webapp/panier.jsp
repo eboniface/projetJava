@@ -25,7 +25,7 @@
 <body>
 
 
-<div class="paypal">
+<div class="paypal" style="margin-top: 10%">
 
 
     <div class="paypal__header">
@@ -59,7 +59,7 @@
 
             <form method="POST">
                 <span class="paypal__help-text">Ajouter un nouvel article par son code barre:</span>
-                <input type="number" name="codeBarre" placeholder="Entrez un codeBarre">
+                <input class="paypal__help-text" style="width: 15%;" type="number" name="codeBarre" placeholder="code">
             </form>
         </div>
 
@@ -77,7 +77,7 @@
             <%
                 int index = 0;
                 for (Map.Entry<Long, Article> articleDansPanier: panier.getlistArticlePanier().entrySet()) {
-                index++;
+                    index++;
             %>
 
             <li class="paypal__cart-item">
@@ -94,6 +94,11 @@
 
     <div class="paypal__footer">
         <img src="https://i.ibb.co/c8CQvBq/barcode.png" alt="Paypal Barcode" class="paypal__barcode">
+        <% if (request.getAttribute("panier")!= null){
+            Panier panier = (Panier)request.getAttribute("panier");
+        %>
+        <span class="paypal__barcode">Montant total: <%=panier.getTotalTTC()%>€</span>
+        <%}%>
     </div>
 </div>
 
