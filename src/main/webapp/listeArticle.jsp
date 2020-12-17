@@ -25,7 +25,7 @@
         </thead>
         <% for (Map.Entry<Long,Article> article: articleListe.entrySet()) {%>
         <tr>
-            <th><%=article.getValue().getCodeBarre() %></th><th><%=article.getValue().getLibelle() %></th><th><%=article.getValue().getPrixHT() %></th><th><%=article.getValue().getTauxTVA() %></th><th><a href="<%=request.getContextPath()%>/ServletSuppressionArticle?codeBarre=<%=article.getValue().getCodeBarre()%>">Supprimer</a> </th>
+            <th><%=article.getValue().getCodeBarre() %></th><th><%=article.getValue().getLibelle() %></th><th><%=article.getValue().getPrixHT() %></th><th><%=article.getValue().getTauxTVA() %></th><th><a href="<%=request.getContextPath()%>/ServletSuppressionArticle?codeBarre=<%=article.getValue().getCodeBarre()%>">Supprimer</a> </th><th><a href="<%=request.getContextPath()%>/ServletModificationArticle?codeBarre=<%=article.getValue().getCodeBarre()%>">Modifier</a> </th>
         </tr>
         <% } %>
     </table>
