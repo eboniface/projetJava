@@ -44,8 +44,12 @@
                     </h3>
                     <p><%=article.getValue().getCodeBarre() %></p>
                     <p style="margin-bottom: 15px"><%=article.getValue().getTauxTVA() %> TVA</p>
+                    <%
+                        boolean isConnecte = (boolean) request.getAttribute("isConnecte");
+                    if(isConnecte){%>
                     <a href="<%=request.getContextPath()%>/ServletModificationArticle?codeBarre=<%=article.getValue().getCodeBarre()%>">Modifier</a>
                     <a href="<%=request.getContextPath()%>/ServletSuppressionArticle?codeBarre=<%=article.getValue().getCodeBarre()%>">Supprimer</a>
+                    <%}%>
                 </div>
             </div>
         </div>
