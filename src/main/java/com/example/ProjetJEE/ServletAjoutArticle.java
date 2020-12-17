@@ -4,10 +4,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.*;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -42,8 +39,19 @@ public class ServletAjoutArticle extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher rd= this.getServletContext().getRequestDispatcher("/ajoutArticle.jsp");
-
-        rd.forward(request, response);
+        Cookie[] cookies = request.getCookies();
+        boolean isConnecte = false;
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("login") && cookie.getValue().equals("OK")) {
+                isConnecte = true;
+            }
+        }
+        if (isConnecte) {
+            RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/ajoutArticle.jsp");
+            rd.forward(request, response);
+        }else{
+            RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/connexion.jsp");
+            rd.forward(request, response);
+        }
     }
 }
