@@ -21,10 +21,9 @@ public class ServletAjoutArticle extends HttpServlet {
         int prixHT = Integer.parseInt(request.getParameter("prixHT"));
         int tauxTVA = Integer.parseInt(request.getParameter("tauxTVA"));
         Article article = new Article(codeBarre, prenom, numeroVol, prixHT, tauxTVA);
-        HttpSession session = request.getSession(true); // a supprimer
         ServletContext context = this.getServletContext();
-        if(session.getAttribute("listeArticle") != null){
-            listeArticle = (ArrayList<Article>) session.getAttribute("listeArticle");
+        if(context.getAttribute("listeArticle") != null){
+            listeArticle = (ArrayList<Article>) context.getAttribute("listeArticle");
             listeArticle.add(article);
             context.setAttribute("listeArticle",listeArticle);
         }else{
