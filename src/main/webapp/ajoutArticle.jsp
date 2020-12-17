@@ -3,8 +3,10 @@
 <html>
 
 <head>
-    <title>Title</title>
+    <title>Supermarché - Ajout d'article</title>
 </head>
+<jsp:include page="header.jsp"/>
+
 <body>
 <div align="center">
     <h1>Enregistrer un Article</h1>
