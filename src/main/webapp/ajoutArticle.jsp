@@ -2,10 +2,6 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 
-<%
-
-    Article article =
-%>
 <head>
     <title>Title</title>
 </head>
@@ -20,13 +16,12 @@
         Code barre : <input type="number" name="codeBarre" placeholder="Entrez un codeBarre">
         Réference : <input type="text" name="reference" placeholder="Entrez une reference"><br><br>
         Libelle : <input type="text" name="libelle" placeholder="Entrez un libelle">
-        Prix HT : <input type="text" name="prixHT" placeholder="Entrez un prix HT"><br><br>
+        Prix HT : <input type="number" name="prixHT" placeholder="Entrez un prix HT"><br><br>
 
         Taux TVA : <select name="tauxTVA">
-        <% for (taux:
-                ) {
-            
-        } %>
+        <% for (int taux: Article.getValeurTauxTVA()) { %>
+            <option value="<%=taux%>"> <%=taux%></option>
+       <% } %>
     </select>
 
 

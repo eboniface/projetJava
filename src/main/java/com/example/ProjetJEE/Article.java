@@ -60,4 +60,8 @@ public class Article {
     public void setTauxTVA(int tauxTVA) {
         this.tauxTVA = tauxTVA;
     }
+
+    public static int[] getValeurTauxTVA() {
+        return ValeurTauxTVA;
+    }
 }
