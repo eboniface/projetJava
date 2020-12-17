@@ -27,7 +27,7 @@ public class ServletSuppressionArticle extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ServletContext context = this.getServletContext();
         Long codeBarreASupp = Long.parseLong(request.getParameter("codeBarre"));
-        HashMap<Long,Article> listeArticle = new HashMap<>();
+        HashMap<Long,Article> listeArticle;
         listeArticle = (HashMap<Long,Article>) context.getAttribute("listeArticle");
         Article articleAEnvoyer = listeArticle.get(codeBarreASupp);
         request.setAttribute("article",articleAEnvoyer);
