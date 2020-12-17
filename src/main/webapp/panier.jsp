@@ -12,7 +12,7 @@
 <head>
     <title>Title</title>
 </head>
-
+<jsp:include page="header.jsp"/>
 
 <body>
 <form method="POST">

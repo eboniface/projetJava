@@ -26,14 +26,11 @@ public class ServletAjoutArticle extends HttpServlet {
         if(context.getAttribute("listeArticle") != null){
             listeArticle = (HashMap<Long, Article>) context.getAttribute("listeArticle");
             listeArticle.put(article.getCodeBarre(),article);
-            context.setAttribute("listeArticle",listeArticle);
-            request.setAttribute("listeArticle",listeArticle);
         }else{
             listeArticle.put(article.getCodeBarre(),article);
-            context.setAttribute("listeArticle",listeArticle);
-            request.setAttribute("listeArticle",listeArticle);
         }
-
+        context.setAttribute("listeArticle",listeArticle);
+        request.setAttribute("listeArticle",listeArticle);
         context.setAttribute("listeArticleHtml",listeArticle);
         request.setAttribute("listeArticleHtml",listeArticle);
 

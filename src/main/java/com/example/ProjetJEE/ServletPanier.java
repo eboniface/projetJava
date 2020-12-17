@@ -29,7 +29,7 @@ public class ServletPanier extends HttpServlet {
             panier.getlistArticlePanier().put(codeBarre,listeArticle.get(codeBarre));
             panier.execute();
         }
-
+        context.setAttribute("panier",panier);
         request.setAttribute("panier",panier);
         RequestDispatcher rd= this.getServletContext().getRequestDispatcher("/panier.jsp");
 
