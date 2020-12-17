@@ -12,13 +12,13 @@
     <title>Title</title>
 </head>
 <body>
-<% ArrayList<Article> articleListe = (ArrayList<Article>) ServletContext().getAttribute("")%>
+<%ArrayList<Article> articleListe = (ArrayList<Article>) request.getAttribute("listeArticle");%>
 <div align="center">
     <table border="1">
         <thead>
         <th>Nom</th><th>Prenom</th><th>Age</th><th>Numero de vol</th><th>Date d'enregistrement</th>
         </thead>
-        <% for (Article article:listePassagerHtml) {%>
+        <% for (Article article:articleListe) {%>
         <tr>
             <th><%=article.getCodeBarre() %></th><th><%=article.getLibelle() %></th><th><%=article.getPrixHT() %></th><th><%=article.getTauxTVA() %></th>
         </tr>
