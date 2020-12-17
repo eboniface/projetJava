@@ -8,14 +8,35 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Supermarché - Connexion</title>
+    <style><%@include file="/WEB-INF/css/register.scss"%></style>
+
 </head>
 <jsp:include page="header.jsp"/>
 <body>
-<form method="post">
-    login: <input type="text"name="login"><br>
-    password: <input type="password" name="password"><br>
-    <button type="submit">Connexion</button>
-</form>
+<div class="wrapper fadeInDown" style="margin-top: 12%">
+    <div id="formContent">
+
+        <h2 class="active"> Connexion </h2>
+
+        <div class="fadeIn first">
+            <img style="max-height: 50px; max-width: 50px" src="https://cdn4.iconfinder.com/data/icons/small-n-flat/24/user-alt-512.png" id="icon" alt="User Icon" />
+        </div>
+
+        <form method="post">
+
+            <input type="text" id="login" class="fadeIn second" name="login" placeholder="login">
+            <input type="text" id="password" class="fadeIn third" name="password" placeholder="mot de passe">
+            <input type="submit" class="fadeIn fourth" value="Se connecter">
+        </form>
+
+        <div id="formFooter">
+        </div>
+
+
+    </div>
+</div>
+
 </body>
 </html>
+
