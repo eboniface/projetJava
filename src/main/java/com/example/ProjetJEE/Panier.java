@@ -1,7 +1,7 @@
 package com.example.ProjetJEE;
 
 
-import java.text.NumberFormat;
+
 import java.util.HashMap;
 import java.util.Map;
 
@@ -10,11 +10,9 @@ public class Panier {
     private HashMap<Long,Double> listPrixUnitaireTTC = new HashMap<>();
     private Double totalTTC;
     private HashMap<Integer,Double> listMontantTauxTVA = new HashMap<>();
-    private  NumberFormat format=NumberFormat.getInstance();
 
     public Panier(HashMap<Long, Article> listArticlePanier) {
         this.listArticlePanier = listArticlePanier;
-        format.setMinimumFractionDigits(2);
     }
 
     public Panier() {
