@@ -10,15 +10,19 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.HashMap;
 
-@WebServlet("/ServletSuppressionArticle")
-public class ServletSuppressionArticle extends HttpServlet {
+@WebServlet("/ServletModificationArticle")
+public class ServletModificationArticle extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ServletContext context = this.getServletContext();
-        Long codeBarreASupp = Long.parseLong(request.getParameter("codeBarre"));
         HashMap<Long,Article> listeArticle;
-        listeArticle = (HashMap<Long,Article>) context.getAttribute("listeArticle");
-        listeArticle.remove(codeBarreASupp);
-
+        int codeBarre = Integer.parseInt(request.getParameter("codeBarre"));
+        String reference =request.getParameter("reference");
+        String libelle = request.getParameter("libelle");
+        int prixHT = Integer.parseInt(request.getParameter("prixHT"));
+        int tauxTVA = Integer.parseInt(request.getParameter("tauxTVA"));
+        ServletContext context = this.getServletContext();
+        listeArticle = (HashMap<Long, Article>) context.getAttribute("listeArticle");
+        Article article = new Article(codeBarre,reference,libelle,prixHT,tauxTVA);
+        listeArticle.replace((long) codeBarre,article);
         RequestDispatcher rd= this.getServletContext().getRequestDispatcher("/listeArticle.jsp");
 
         rd.forward(request, response);
@@ -31,7 +35,7 @@ public class ServletSuppressionArticle extends HttpServlet {
         listeArticle = (HashMap<Long,Article>) context.getAttribute("listeArticle");
         Article articleAEnvoyer = listeArticle.get(codeBarreASupp);
         request.setAttribute("article",articleAEnvoyer);
-        RequestDispatcher rd= this.getServletContext().getRequestDispatcher("/suppressionArticle.jsp");
+        RequestDispatcher rd= this.getServletContext().getRequestDispatcher("/modificationArticle.jsp");
 
         rd.forward(request, response);
     }

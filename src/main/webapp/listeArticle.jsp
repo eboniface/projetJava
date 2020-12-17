@@ -26,7 +26,6 @@
     <div style="align-items: center;">
     <div class="container">
         <%
-            int i = 0;
             for (Map.Entry<Long,Article> article: articleListe.entrySet()) {
 
         %>
@@ -44,7 +43,8 @@
                         <%=article.getValue().getPrixHT() %>€ HT
                     </h3>
                     <p><%=article.getValue().getCodeBarre() %></p>
-                    <p><%=article.getValue().getTauxTVA() %> TVA</p><br>
+                    <p style="margin-bottom: 15px"><%=article.getValue().getTauxTVA() %> TVA</p>
+                    <a href="<%=request.getContextPath()%>/ServletModificationArticle?codeBarre=<%=article.getValue().getCodeBarre()%>">Modifier</a>
                     <a href="<%=request.getContextPath()%>/ServletSuppressionArticle?codeBarre=<%=article.getValue().getCodeBarre()%>">Supprimer</a>
                 </div>
             </div>
