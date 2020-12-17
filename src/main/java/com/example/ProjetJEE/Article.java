@@ -17,9 +17,7 @@ public class Article {
         this.tauxTVA = tauxTVA;
     }
 
-    public Article() {
-
-    }
+    public Article() { }
 
     public long getCodeBarre() {
         return codeBarre;

@@ -15,6 +15,7 @@ import java.util.Map;
 @WebServlet(name = "ServletConnexion")
 public class ServletConnexion extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String login =request.getParameter("login");
         String password = request.getParameter("password");
         ServletContext context = this.getServletContext();
@@ -30,8 +31,8 @@ public class ServletConnexion extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher rd= this.getServletContext().getRequestDispatcher("/connexion.jsp");
 
+        RequestDispatcher rd= this.getServletContext().getRequestDispatcher("/connexion.jsp");
         rd.forward(request, response);
     }
 }

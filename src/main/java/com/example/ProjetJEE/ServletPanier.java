@@ -15,7 +15,6 @@ import java.util.HashMap;
 public class ServletPanier extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
         ServletContext context = this.getServletContext();
         HashMap<Long,Article> listeArticle;
         listeArticle = (HashMap<Long,Article>) context.getAttribute("listeArticle");
@@ -31,15 +30,14 @@ public class ServletPanier extends HttpServlet {
         }
         context.setAttribute("panier",panier);
         request.setAttribute("panier",panier);
-        RequestDispatcher rd= this.getServletContext().getRequestDispatcher("/panier.jsp");
 
+        RequestDispatcher rd= this.getServletContext().getRequestDispatcher("/panier.jsp");
         rd.forward(request, response);
     }
 
 
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
 
         ServletContext context = this.getServletContext();
         Panier panier;
@@ -48,9 +46,7 @@ public class ServletPanier extends HttpServlet {
             request.setAttribute("panier",panier);
         }
 
-
         RequestDispatcher rd= this.getServletContext().getRequestDispatcher("/panier.jsp");
-
         rd.forward(request, response);
     }
 }

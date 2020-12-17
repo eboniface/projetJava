@@ -12,6 +12,7 @@ import java.util.HashMap;
 @WebServlet("/ServletAjoutArticle")
 public class ServletAjoutArticle extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         HashMap<Long,Article> listeArticle = new HashMap<>();
         int codeBarre = Integer.parseInt(request.getParameter("codeBarre"));
         String reference =request.getParameter("reference");
@@ -31,14 +32,13 @@ public class ServletAjoutArticle extends HttpServlet {
         context.setAttribute("listeArticleHtml",listeArticle);
         request.setAttribute("listeArticleHtml",listeArticle);
 
-        RequestDispatcher rd =
-                this.getServletContext()
-                        .getRequestDispatcher("/listeArticle.jsp");
 
+        RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/listeArticle.jsp");
         rd.forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         Cookie[] cookies = request.getCookies();
         boolean isConnecte = false;
         for (Cookie cookie : cookies) {
@@ -47,9 +47,11 @@ public class ServletAjoutArticle extends HttpServlet {
             }
         }
         if (isConnecte) {
+
             RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/ajoutArticle.jsp");
             rd.forward(request, response);
         }else{
+
             RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/connexion.jsp");
             rd.forward(request, response);
         }

@@ -14,6 +14,7 @@ import java.util.HashMap;
 @WebServlet("/ServletSuppressionArticle")
 public class ServletSuppressionArticle extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         ServletContext context = this.getServletContext();
         Long codeBarreASupp = Long.parseLong(request.getParameter("codeBarre"));
         HashMap<Long,Article> listeArticle;
@@ -21,11 +22,11 @@ public class ServletSuppressionArticle extends HttpServlet {
         listeArticle.remove(codeBarreASupp);
 
         RequestDispatcher rd= this.getServletContext().getRequestDispatcher("/listeArticle.jsp");
-
         rd.forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         Cookie[] cookies = request.getCookies();
         boolean isConnecte = false;
         for (Cookie cookie : cookies) {
@@ -45,6 +46,7 @@ public class ServletSuppressionArticle extends HttpServlet {
             RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/suppressionArticle.jsp");
             rd.forward(request, response);
         }else{
+
             RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/connexion.jsp");
             rd.forward(request, response);
         }

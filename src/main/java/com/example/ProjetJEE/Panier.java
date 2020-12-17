@@ -1,9 +1,7 @@
 package com.example.ProjetJEE;
 
 
-import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -56,6 +54,7 @@ public class Panier {
 
 
     public void CalculAutomatiquePrixUnitaireTTC(HashMap<Long,Article> listArticlePanier) {
+
         for (Map.Entry<Long,Article> article: listArticlePanier.entrySet()) {
             double prixUnitaireTTC;
 
@@ -70,6 +69,7 @@ public class Panier {
     }
 
     public void CalculAutomatiqueTTC(HashMap<Long,Double> listPrixUnitaireTTC){
+
         Double prixUnitaireTTC =0.0;
 
         for (Map.Entry<Long,Double> prixTTC: listPrixUnitaireTTC.entrySet()) {

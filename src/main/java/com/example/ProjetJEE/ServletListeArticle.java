@@ -19,12 +19,11 @@ public class ServletListeArticle extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
         ServletContext context = this.getServletContext();
         HashMap<Long,Article> listeArticle = new HashMap<>();
 
-
         if(context.getAttribute("listeArticle") == null){
+
             Article article = new Article(987456131, "pdffra98", "Pot de fleur ", 20, 550);
             listeArticle.put(article.getCodeBarre(),article);
 
@@ -37,16 +36,9 @@ public class ServletListeArticle extends HttpServlet {
             context.setAttribute("listeArticle",listeArticle);
         }
         listeArticle = (HashMap<Long,Article>) context.getAttribute("listeArticle");
-
-
         request.setAttribute("listeArticle",listeArticle);
 
         RequestDispatcher rd= this.getServletContext().getRequestDispatcher("/listeArticle.jsp");
-
         rd.forward(request, response);
-
-
-
-
     }
 }

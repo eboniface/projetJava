@@ -13,6 +13,7 @@ import java.util.HashMap;
 @WebServlet(name = "ServletInscription")
 public class ServletInscription extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         String login =request.getParameter("login");
         String password = request.getParameter("password");
         ServletContext context = this.getServletContext();
@@ -27,8 +28,8 @@ public class ServletInscription extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        RequestDispatcher rd= this.getServletContext().getRequestDispatcher("/inscription.jsp");
 
+        RequestDispatcher rd= this.getServletContext().getRequestDispatcher("/inscription.jsp");
         rd.forward(request, response);
     }
 }
