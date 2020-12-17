@@ -52,8 +52,7 @@ public class ServletAjoutArticle extends HttpServlet {
             rd.forward(request, response);
         }else{
 
-            RequestDispatcher rd = this.getServletContext().getRequestDispatcher("/connexion.jsp");
-            rd.forward(request, response);
+            response.sendRedirect(request.getContextPath()+"/ServletListeArticle");
         }
     }
 }

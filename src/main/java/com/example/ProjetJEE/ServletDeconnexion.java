@@ -21,7 +21,7 @@ public class ServletDeconnexion extends HttpServlet {
         for (Cookie cookie : cookies) {
             if (cookie.getName().equals("login") && cookie.getValue().equals("OK")) {
                 Cookie cookieSupp= new Cookie(cookie.getName(),"");
-                cookie.setMaxAge(0);
+                cookieSupp.setMaxAge(0);
                 response.addCookie(cookieSupp);
             }
         }
