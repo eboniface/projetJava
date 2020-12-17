@@ -15,12 +15,14 @@
 <html>
 <head>
     <style><%@include file="/WEB-INF/css/header.css"%></style>
+
+    <div class="topnav">
+        <a <% if (pageName.equals("")) {%>class="active"<%}%> href="<%=request.getContextPath()%>">Accueil</a>
+        <a <% if (pageName.equals("ajoutArticle.jsp")) {%>class="active"<%}%> href="<%=request.getContextPath()%>/ServletAjoutArticle">Ajout</a>
+        <a <% if (pageName.equals("listeArticle.jsp")) {%>class="active"<%}%> href="<%=request.getContextPath()%>/ServletListeArticle">Liste</a>
+    </div>
 </head>
 
-<div class="topnav">
-    <a <% if (pageName.equals("")) {%>class="active"<%}%> href="<%=request.getContextPath()%>">Accueil</a>
-    <a <% if (pageName.equals("ajoutArticle.jsp")) {%>class="active"<%}%> href="<%=request.getContextPath()%>/ServletAjoutArticle">Ajout</a>
-    <a <% if (pageName.equals("listeArticle.jsp")) {%>class="active"<%}%> href="<%=request.getContextPath()%>/ServletListeArticle">Liste</a>
-</div>
+
 
 </html>
