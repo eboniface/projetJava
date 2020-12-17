@@ -10,11 +10,12 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 @WebServlet("/ServletAjoutArticle")
 public class ServletAjoutArticle extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        ArrayList<Article> listeArticle = new ArrayList<>();
+        HashMap<Long,Article> listeArticle = new HashMap<>();
         int codeBarre = Integer.parseInt(request.getParameter("codeBarre"));
         String reference =request.getParameter("reference");
         String libelle = request.getParameter("libelle");
@@ -23,12 +24,12 @@ public class ServletAjoutArticle extends HttpServlet {
         Article article = new Article(codeBarre, reference, libelle, prixHT, tauxTVA);
         ServletContext context = this.getServletContext();
         if(context.getAttribute("listeArticle") != null){
-            listeArticle = (ArrayList<Article>) context.getAttribute("listeArticle");
-            listeArticle.add(article);
+            listeArticle = (HashMap<Long, Article>) context.getAttribute("listeArticle");
+            listeArticle.put(article.getCodeBarre(),article);
             context.setAttribute("listeArticle",listeArticle);
             request.setAttribute("listeArticle",listeArticle);
         }else{
-            listeArticle.add(article);
+            listeArticle.put(article.getCodeBarre(),article);
             context.setAttribute("listeArticle",listeArticle);
             request.setAttribute("listeArticle",listeArticle);
         }
