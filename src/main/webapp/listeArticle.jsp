@@ -22,7 +22,7 @@
 
 <%HashMap<Long,Article> articleListe = (HashMap<Long,Article>) request.getAttribute("listeArticle");%>
 
-<div class="cardDiv">
+<div class="cardDiv" style="margin-top: 5%">
     <div style="align-items: center;">
     <div class="container">
         <%

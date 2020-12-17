@@ -24,7 +24,7 @@
         <h2 class="content-head is-center">Découvrez tous nos articles</h2>
         <br>
         <p align="center" >
-            <a href="<%=request.getContextPath()%>/ServletListeArticle" class="pure-button pure-button-primary">Voir la page article</a>
+            <a href="<%=request.getContextPath()%>/ServletListeArticle" class="pure-button pure-button-primary">Voir la page des articles</a>
         </p>
     </div>
 </div>
