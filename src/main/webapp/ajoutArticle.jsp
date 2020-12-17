@@ -28,7 +28,7 @@
 
 
 
-        <input type="text" name="tauxTVA" placeholder="Entrez un taux de TVA">
+
         <button type="submit">Valider</button>
     </form>
 </div>
