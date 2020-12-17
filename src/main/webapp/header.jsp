@@ -21,6 +21,9 @@
         <a <% if (pageName.equals("ajoutArticle.jsp")) {%>class="active"<%}%> href="<%=request.getContextPath()%>/ServletAjoutArticle">Ajout</a>
         <a <% if (pageName.equals("listeArticle.jsp")) {%>class="active"<%}%> href="<%=request.getContextPath()%>/ServletListeArticle">Liste</a>
         <a <% if (pageName.equals("panier.jsp")) {%>class="active"<%}%> href="<%=request.getContextPath()%>/ServletPanier">Panier</a>
+        <a <% if (pageName.equals("connexion.jsp")) {%>class="active"<%}%> href="<%=request.getContextPath()%>/ServletConnexion">connexion</a>
+        <a <% if (pageName.equals("inscription.jsp")) {%>class="active"<%}%> href="<%=request.getContextPath()%>/ServletInscription">inscription</a>
+        <a  href="<%=request.getContextPath()%>/ServletDeconnexion">Deconnexion</a>
     </div>
 </head>
 

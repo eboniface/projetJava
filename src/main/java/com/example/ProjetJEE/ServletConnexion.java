@@ -12,7 +12,7 @@ import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-@WebServlet(name = "ServletConnexion")
+@WebServlet("/ServletConnexion")
 public class ServletConnexion extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -28,6 +28,8 @@ public class ServletConnexion extends HttpServlet {
                 this.doGet(request,response);
             }
         }
+        RequestDispatcher rd= this.getServletContext().getRequestDispatcher("/index.jsp");
+        rd.forward(request, response);
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
