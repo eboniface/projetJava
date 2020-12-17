@@ -13,7 +13,7 @@ import java.util.HashMap;
 @WebServlet("/ServletModificationArticle")
 public class ServletModificationArticle extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        HashMap<Long,Article> listeArticle = new HashMap<>();
+        HashMap<Long,Article> listeArticle;
         int codeBarre = Integer.parseInt(request.getParameter("codeBarre"));
         String reference =request.getParameter("reference");
         String libelle = request.getParameter("libelle");
