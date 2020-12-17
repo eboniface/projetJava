@@ -45,7 +45,18 @@
     <div class="paypal__subheader-wrapper">
         <div class="paypal__subheader">
             <h1 class="paypal__username">Bonjour,</h1>
-            <span class="paypal__help-text">Vous avez actuellement (3) articles dans votre panier:</span>
+            <% if (request.getAttribute("panier")!= null){
+                Panier panier = (Panier)request.getAttribute("panier");
+                if(panier.getlistArticlePanier().size() ==1 ){%>
+                    <span class="paypal__help-text">Vous avez actuellement <%=panier.getlistArticlePanier().size()%> article dans votre panier:</span>
+                <%}else if(panier.getlistArticlePanier().size() ==0){%>
+                    <span class="paypal__help-text">Vous n'avez aucun article dans votre panier:</span>
+                <%}else if(panier.getlistArticlePanier().size() >1){%>
+                    <span class="paypal__help-text">Vous avez actuellement <%=panier.getlistArticlePanier().size()%> articles dans votre panier:</span>
+                <%}%>
+            <%}%>
+
+
             <form method="POST">
                 <span class="paypal__help-text">Ajouter un nouvel article par son code barre:</span>
                 <input class="paypal__help-text" style="width: 15%;" type="number" name="codeBarre" placeholder="code">

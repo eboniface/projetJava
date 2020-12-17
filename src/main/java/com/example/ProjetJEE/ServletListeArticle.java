@@ -4,6 +4,7 @@ import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,12 +20,18 @@ public class ServletListeArticle extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-
         ServletContext context = this.getServletContext();
         HashMap<Long,Article> listeArticle = new HashMap<>();
 
-
+        Cookie[] cookies = request.getCookies();
+        boolean isConnecte = false;
+        for (Cookie cookie : cookies) {
+            if (cookie.getName().equals("login") && cookie.getValue().equals("OK")) {
+                isConnecte = true;
+            }
+        }
         if(context.getAttribute("listeArticle") == null){
+
             Article article = new Article(987456131, "pdffra98", "Pot de fleur ", 20, 550);
             listeArticle.put(article.getCodeBarre(),article);
 
@@ -37,16 +44,10 @@ public class ServletListeArticle extends HttpServlet {
             context.setAttribute("listeArticle",listeArticle);
         }
         listeArticle = (HashMap<Long,Article>) context.getAttribute("listeArticle");
-
-
         request.setAttribute("listeArticle",listeArticle);
+        request.setAttribute("isConnecte",isConnecte);
 
         RequestDispatcher rd= this.getServletContext().getRequestDispatcher("/listeArticle.jsp");
-
         rd.forward(request, response);
-
-
-
-
     }
 }

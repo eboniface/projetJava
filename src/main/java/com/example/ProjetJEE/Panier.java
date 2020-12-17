@@ -1,9 +1,7 @@
 package com.example.ProjetJEE;
 
 
-import java.text.DecimalFormat;
 import java.text.NumberFormat;
-import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -11,7 +9,7 @@ public class Panier {
     private HashMap<Long,Article> listArticlePanier = new HashMap<>();
     private HashMap<Long,Double> listPrixUnitaireTTC = new HashMap<>();
     private Double totalTTC;
-    private HashMap<Long,Double> listMontantTauxTVA = new HashMap<>();
+    private HashMap<Integer,Double> listMontantTauxTVA = new HashMap<>();
     private  NumberFormat format=NumberFormat.getInstance();
 
     public Panier(HashMap<Long, Article> listArticlePanier) {
@@ -46,16 +44,17 @@ public class Panier {
         this.totalTTC = totalTTC;
     }
 
-    public HashMap<Long, Double> getListMontantTauxTVA() {
+    public HashMap<Integer, Double> getListMontantTauxTVA() {
         return listMontantTauxTVA;
     }
 
-    public void setListMontantTauxTVA(HashMap<Long, Double> listMontantTauxTVA) {
+    public void setListMontantTauxTVA(HashMap<Integer, Double> listMontantTauxTVA) {
         this.listMontantTauxTVA = listMontantTauxTVA;
     }
 
 
     public void CalculAutomatiquePrixUnitaireTTC(HashMap<Long,Article> listArticlePanier) {
+
         for (Map.Entry<Long,Article> article: listArticlePanier.entrySet()) {
             double prixUnitaireTTC;
 
@@ -70,6 +69,7 @@ public class Panier {
     }
 
     public void CalculAutomatiqueTTC(HashMap<Long,Double> listPrixUnitaireTTC){
+
         Double prixUnitaireTTC =0.0;
 
         for (Map.Entry<Long,Double> prixTTC: listPrixUnitaireTTC.entrySet()) {
@@ -80,16 +80,20 @@ public class Panier {
 
 
     public void CalculAutomatiqueMontantUnitaireTVA(HashMap<Long,Article> listArticlePanier){
+
+        double totalTVACinq =0.0;
+        double totalTVAVingt =0.0;
         for (Map.Entry<Long,Article> article: listArticlePanier.entrySet()) {
-            double prixUnitaireTTC;
+
 
             if(article.getValue().getTauxTVA()==550){
-                prixUnitaireTTC = article.getValue().getPrixHT()*0.055;
+                totalTVACinq += article.getValue().getPrixHT()*0.055;
             }else{
-                prixUnitaireTTC = article.getValue().getPrixHT()*0.2;
+                totalTVAVingt += article.getValue().getPrixHT()*0.2;
             }
-            listMontantTauxTVA.put(article.getKey(), prixUnitaireTTC);
         }
+        listMontantTauxTVA.put(550,totalTVACinq);
+        listMontantTauxTVA.put(2000,totalTVAVingt);
     }
     public void execute(){
         CalculAutomatiquePrixUnitaireTTC(listArticlePanier);
