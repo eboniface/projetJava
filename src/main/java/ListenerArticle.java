@@ -27,7 +27,7 @@ public class ListenerArticle implements ServletContextListener,
         Article article2 = new Article(456987123, "bafra45", "Barquette de fraises", 3, 550);
         listeArticle.put(article2.getCodeBarre(),article2);
 
-        Article article3 = new Article(714896574, "balcfra71", "Bouteille de bière", 7, 2000);
+        Article article3 = new Article(714896574, "balcfra71", "Mug", 7, 2000);
         listeArticle.put(article3.getCodeBarre(),article3);
 
         context.setAttribute("listeArticle",listeArticle);

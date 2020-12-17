@@ -19,13 +19,13 @@
 
     <div class="topnav">
         <a <% if (pageName.equals("")) {%>class="active"<%}%> href="<%=request.getContextPath()%>">Accueil</a>
-        <a <% if (pageName.equals("ajoutArticle.jsp")) {%>class="active"<%}%> href="<%=request.getContextPath()%>/ServletAjoutArticle">Ajout</a>
         <a <% if (pageName.equals("listeArticle.jsp")) {%>class="active"<%}%> href="<%=request.getContextPath()%>/ServletListeArticle">Liste</a>
         <%if (!isConnected){%>
-        <a <% if (pageName.equals("connexion.jsp")) {%>class="active"<%}%> href="<%=request.getContextPath()%>/ServletConnexion">connexion</a>
-        <a <% if (pageName.equals("inscription.jsp")) {%>class="active"<%}%> href="<%=request.getContextPath()%>/ServletInscription">inscription</a>
+        <a <% if (pageName.equals("connexion.jsp")) {%>class="active"<%}%> style="float:right" href="<%=request.getContextPath()%>/ServletConnexion">connexion</a>
+        <a <% if (pageName.equals("inscription.jsp")) {%>class="active"<%}%> style="float:right" href="<%=request.getContextPath()%>/ServletInscription">inscription</a>
         <%}else{%>
-        <a  href="<%=request.getContextPath()%>/ServletDeconnexion">Deconnexion</a>
+        <a <% if (pageName.equals("ajoutArticle.jsp")) {%>class="active"<%}%> href="<%=request.getContextPath()%>/ServletAjoutArticle">Ajout</a>
+        <a  href="<%=request.getContextPath()%>/ServletDeconnexion" style="float:right">Deconnexion</a>
         <%}%>
         <a <% if (pageName.equals("panier.jsp")) {%>class="active"<%}%> style="float:right" href="<%=request.getContextPath()%>/ServletPanier">Panier</a>
 

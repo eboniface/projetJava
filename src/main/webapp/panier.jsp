@@ -98,6 +98,8 @@
             Panier panier = (Panier)request.getAttribute("panier");
         %>
         <span class="paypal__barcode">Montant total: <%=panier.getTotalTTC()%>€</span>
+        <span class="paypal__barcode">TVA 5,5%: <%=panier.getListMontantTauxTVA().get(550)%>€</span>
+        <span class="paypal__barcode">TVA 20%: <%=panier.getListMontantTauxTVA().get(2000)%>€</span>
         <%}%>
     </div>
 </div>
