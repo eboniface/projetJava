@@ -16,11 +16,11 @@ public class ServletAjoutArticle extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<Article> listeArticle = new ArrayList<>();
         int codeBarre = Integer.parseInt(request.getParameter("codeBarre"));
-        String prenom =request.getParameter("reference");
-        String numeroVol = request.getParameter("libelle");
+        String reference =request.getParameter("reference");
+        String libelle = request.getParameter("libelle");
         int prixHT = Integer.parseInt(request.getParameter("prixHT"));
         int tauxTVA = Integer.parseInt(request.getParameter("tauxTVA"));
-        Article article = new Article(codeBarre, prenom, numeroVol, prixHT, tauxTVA);
+        Article article = new Article(codeBarre, reference, libelle, prixHT, tauxTVA);
         ServletContext context = this.getServletContext();
         if(context.getAttribute("listeArticle") != null){
             listeArticle = (ArrayList<Article>) context.getAttribute("listeArticle");

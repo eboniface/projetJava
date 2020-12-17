@@ -4,12 +4,13 @@
 <head>
     <title>JSP - Hello World</title>
 </head>
-<body>
-<h1><%= "Hello World!" %>
-</h1>
-<br/>
-<a href="hello-servlet">Hello Servlet</a>
-<a href="<%=request.getContextPath()%>/ServletAjoutArticle">Hello Servlet</a>
-<a href="<%=request.getContextPath()%>/ServletListeArticle">Hello Servlet</a>
-</body>
+    <body>
+        <div align="center">
+            <h1><%= "Supermarché!" %>
+            </h1>
+            <br/>
+            <a href="<%=request.getContextPath()%>/ServletAjoutArticle">Ajouter un article</a>
+            <a href="<%=request.getContextPath()%>/ServletListeArticle">Liste des article</a>
+        </div>
+    </body>
 </html>

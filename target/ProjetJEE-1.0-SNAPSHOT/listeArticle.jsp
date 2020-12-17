@@ -16,7 +16,7 @@
 <div align="center">
     <table border="1">
         <thead>
-        <th>Nom</th><th>Prenom</th><th>Age</th><th>Numero de vol</th><th>Date d'enregistrement</th>
+        <th>Code Barre</th><th>Libelle de l'article</th><th>Prix HT</th><th>Taux de TVA</th>
         </thead>
         <% for (Article article:articleListe) {%>
         <tr>
