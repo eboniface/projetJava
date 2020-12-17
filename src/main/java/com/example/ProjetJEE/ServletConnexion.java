@@ -22,6 +22,8 @@ public class ServletConnexion extends HttpServlet {
             if( user.getKey().equals(login) && user.getValue().equals(password)){
                 Cookie cookie = new Cookie("login","OK");
                 response.addCookie(cookie);
+            }else {
+                this.doGet(request,response);
             }
         }
     }
