@@ -1,5 +1,6 @@
 package com.example.ProjetJEE;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -29,6 +30,8 @@ public class ServletConnexion extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        RequestDispatcher rd= this.getServletContext().getRequestDispatcher("/connexion.jsp");
 
+        rd.forward(request, response);
     }
 }
