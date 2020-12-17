@@ -24,7 +24,7 @@
     Panier panier = (Panier)request.getAttribute("panier");
 %>
 <% for (Map.Entry<Long, Article> articleDansPanier: panier.getlistArticlePanier().entrySet()) {%>
-<%=articleDansPanier.getValue().getLibelle()%> :::::::::::<%=panier.getListPrixUnitaireTTC().get(articleDansPanier.getKey())%>
+<%=articleDansPanier.getValue().getLibelle()%> :::::::::::<%=panier.getListPrixUnitaireTTC().get(articleDansPanier.getKey())%>:::::::::<%=panier.getListMontantTauxTVA().get(articleDansPanier.getKey())%>
 <%}%>
 <%}%>
 </body>
