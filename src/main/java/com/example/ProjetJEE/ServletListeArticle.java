@@ -30,19 +30,6 @@ public class ServletListeArticle extends HttpServlet {
                 isConnecte = true;
             }
         }
-        if(context.getAttribute("listeArticle") == null){
-
-            Article article = new Article(987456131, "pdffra98", "Pot de fleur ", 20, 550);
-            listeArticle.put(article.getCodeBarre(),article);
-
-            Article article2 = new Article(456987123, "bafra45", "Barquette de fraises", 3, 550);
-            listeArticle.put(article2.getCodeBarre(),article2);
-
-            Article article3 = new Article(714896574, "balcfra71", "Bouteille de bière", 7, 2000);
-            listeArticle.put(article3.getCodeBarre(),article3);
-
-            context.setAttribute("listeArticle",listeArticle);
-        }
         listeArticle = (HashMap<Long,Article>) context.getAttribute("listeArticle");
         request.setAttribute("listeArticle",listeArticle);
         request.setAttribute("isConnecte",isConnecte);
