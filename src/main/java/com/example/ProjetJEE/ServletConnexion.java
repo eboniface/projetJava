@@ -13,6 +13,7 @@ import java.util.Map;
 public class ServletConnexion extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        HttpSession session= request.getSession(true);
         String login =request.getParameter("login");
         String password = request.getParameter("password");
         ServletContext context = this.getServletContext();
@@ -21,11 +22,13 @@ public class ServletConnexion extends HttpServlet {
             if( user.getKey().equals(login) && user.getValue().equals(password)){
                 Cookie cookie = new Cookie("login","OK");
                 response.addCookie(cookie);
+                boolean isConnected = true;
+                session.setAttribute("isConnected",isConnected);
             }else {
                 this.doGet(request,response);
             }
         }
-        HttpSession session= request.getSession(true);
+
         RequestDispatcher rd= this.getServletContext().getRequestDispatcher("/index.jsp");
         rd.forward(request, response);
     }

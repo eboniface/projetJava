@@ -4,10 +4,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 import javax.servlet.annotation.WebListener;
-import javax.servlet.http.HttpSessionAttributeListener;
-import javax.servlet.http.HttpSessionEvent;
-import javax.servlet.http.HttpSessionListener;
-import javax.servlet.http.HttpSessionBindingEvent;
+import javax.servlet.http.*;
 import java.util.HashMap;
 
 @WebListener()
@@ -47,7 +44,10 @@ public class ListenerArticle implements ServletContextListener,
     // HttpSessionListener implementation
     // -------------------------------------------------------
     public void sessionCreated(HttpSessionEvent se) {
-        /* Session is created. */
+        HttpSession session= se.getSession();
+        boolean isConnected;
+        isConnected = false;
+        session.setAttribute("isConnected",isConnected);
     }
 
     public void sessionDestroyed(HttpSessionEvent se) {
