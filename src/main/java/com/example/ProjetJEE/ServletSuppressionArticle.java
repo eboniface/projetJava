@@ -21,8 +21,7 @@ public class ServletSuppressionArticle extends HttpServlet {
         listeArticle = (HashMap<Long,Article>) context.getAttribute("listeArticle");
         listeArticle.remove(codeBarreASupp);
 
-        RequestDispatcher rd= this.getServletContext().getRequestDispatcher("/listeArticle.jsp");
-        rd.forward(request, response);
+        response.sendRedirect(request.getContextPath()+"/ServletListeArticle");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {

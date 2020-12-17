@@ -26,8 +26,7 @@ public class ServletModificationArticle extends HttpServlet {
         Article article = new Article(codeBarre,reference,libelle,prixHT,tauxTVA);
         listeArticle.replace((long) codeBarre,article);
 
-        RequestDispatcher rd= this.getServletContext().getRequestDispatcher("/listeArticle.jsp");
-        rd.forward(request, response);
+        response.sendRedirect(request.getContextPath()+"/ServletListeArticle");
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
