@@ -8,19 +8,21 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <% Article articleASupprimer = (Article) request.getAttribute("article");%>
     <title>Title</title>
 
-    Code barre:<%=articleASupprimer.getCodeBarre() %>
-    Libelle:<%=articleASupprimer.getLibelle() %>
-    prix HT:<%=articleASupprimer.getPrixHT() %>
-     Taux TVA: <%=articleASupprimer.getTauxTVA() %>
-    <form method="post">
-        <input hidden name="codeBarre" value="<%=articleASupprimer.getCodeBarre() %>">
-        <button type="submit">Supprimer</button>
-    </form>
 </head>
-<body>
+<jsp:include page="header.jsp"/>
 
+<body>
+<% Article articleASupprimer = (Article) request.getAttribute("article");%>
+
+Code barre:<%=articleASupprimer.getCodeBarre() %>
+Libelle:<%=articleASupprimer.getLibelle() %>
+prix HT:<%=articleASupprimer.getPrixHT() %>
+Taux TVA: <%=articleASupprimer.getTauxTVA() %>
+<form method="post">
+    <input hidden name="codeBarre" value="<%=articleASupprimer.getCodeBarre() %>">
+    <button type="submit">Supprimer</button>
+</form>
 </body>
 </html>
