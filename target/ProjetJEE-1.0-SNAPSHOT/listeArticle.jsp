@@ -25,7 +25,11 @@
         </thead>
         <% for (Map.Entry<Long,Article> article: articleListe.entrySet()) {%>
         <tr>
+<<<<<<< HEAD
             <th><%=article.getValue().getCodeBarre() %></th><th><%=article.getValue().getLibelle() %></th><th><%=article.getValue().getPrixHT() %></th><th><%=article.getValue().getTauxTVA() %></th>
+=======
+            <th><%=article.getValue().getCodeBarre() %></th><th><%=article.getValue().getLibelle() %></th><th><%=article.getValue().getPrixHT() %></th><th><%=article.getValue().getTauxTVA() %></th><th><a href="<%=request.getContextPath()%>/ServletSuppressionArticle?codeBarre=<%=article.getValue().getCodeBarre()%>">Supprimer</a> </th>
+>>>>>>> 6b1202bb24ccaf1dfba17cb4c606f440032ad770
         </tr>
         <% } %>
     </table>
