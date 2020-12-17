@@ -11,9 +11,12 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Title</title>
+    <title>Supermarché - Liste des Articles</title>
 </head>
+<jsp:include page="header.jsp"/>
+
 <body>
+
 <%HashMap<Long,Article> articleListe = (HashMap<Long,Article>) request.getAttribute("listeArticle");%>
 <div align="center">
     <table border="1">
@@ -29,8 +32,5 @@
 </div>
 <br>
 <br>
-<div align="center">
-    <a href="<%=request.getContextPath()%>">Accueil</a>
-</div>
 </body>
 </html>

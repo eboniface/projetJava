@@ -2,15 +2,15 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSP - Hello World</title>
+    <title>Supermarché</title>
 </head>
+<jsp:include page="header.jsp"/>
+
     <body>
         <div align="center">
             <h1><%= "Supermarché!" %>
             </h1>
             <br/>
-            <a href="<%=request.getContextPath()%>/ServletAjoutArticle">Ajouter un article</a>
-            <a href="<%=request.getContextPath()%>/ServletListeArticle">Liste des article</a>
         </div>
     </body>
 </html>
