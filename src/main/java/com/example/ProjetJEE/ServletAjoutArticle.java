@@ -11,7 +11,7 @@ import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(name = "ServletAjoutArticle")
+@WebServlet("/ServletAjoutArticle")
 public class ServletAjoutArticle extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         ArrayList<Article> listeArticle = new ArrayList<>();
@@ -22,10 +22,19 @@ public class ServletAjoutArticle extends HttpServlet {
         int tauxTVA = Integer.parseInt(request.getParameter("tauxTVA"));
         Article article = new Article(codeBarre, prenom, numeroVol, prixHT, tauxTVA);
         ServletContext context = this.getServletContext();
+        if(context.getAttribute("listeArticle") != null){
+            listeArticle = (ArrayList<Article>) context.getAttribute("listeArticle");
+            listeArticle.add(article);
+            context.setAttribute("listeArticle",listeArticle);
+            request.setAttribute("listeArticle",listeArticle);
+        }else{
+            listeArticle.add(article);
+            context.setAttribute("listeArticle",listeArticle);
+            request.setAttribute("listeArticle",listeArticle);
+        }
 
-        listeArticle = (ArrayList<Article>) context.getAttribute("listeArticle");
-        listeArticle.add(article);
-        context.setAttribute("listeArticle",listeArticle);
+        context.setAttribute("listeArticleHtml",listeArticle);
+        request.setAttribute("listeArticleHtml",listeArticle);
 
         RequestDispatcher rd =
                 this.getServletContext()

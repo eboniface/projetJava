@@ -9,5 +9,7 @@
 </h1>
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
+<a href="<%=request.getContextPath()%>/ServletAjoutArticle">Ajouter un article</a>
+<a href="<%=request.getContextPath()%>/ServletListeArticle">Liste des article</a>
 </body>
 </html>
