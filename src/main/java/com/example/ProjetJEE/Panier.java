@@ -1,6 +1,9 @@
 package com.example.ProjetJEE;
 
+
 import java.text.DecimalFormat;
+import java.text.NumberFormat;
+import java.text.ParseException;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -9,10 +12,11 @@ public class Panier {
     private HashMap<Long,Double> listPrixUnitaireTTC = new HashMap<>();
     private Double totalTTC;
     private HashMap<Long,Double> listMontantTauxTVA = new HashMap<>();
-    private final DecimalFormat df = new DecimalFormat("0.00");
+    private  NumberFormat format=NumberFormat.getInstance();
 
     public Panier(HashMap<Long, Article> listArticlePanier) {
         this.listArticlePanier = listArticlePanier;
+        format.setMinimumFractionDigits(2);
     }
 
     public Panier() {
@@ -51,14 +55,15 @@ public class Panier {
     }
 
 
-    public void CalculAutomatiquePrixUnitaireTTC(HashMap<Long,Article> listArticlePanier){
+    public void CalculAutomatiquePrixUnitaireTTC(HashMap<Long,Article> listArticlePanier) {
         for (Map.Entry<Long,Article> article: listArticlePanier.entrySet()) {
             double prixUnitaireTTC;
 
             if(article.getValue().getTauxTVA()==550){
-                prixUnitaireTTC = Double.parseDouble(df.format(article.getValue().getPrixHT()*1.055));
+
+                prixUnitaireTTC = article.getValue().getPrixHT()*1.055;
             }else{
-                prixUnitaireTTC = Double.parseDouble(df.format(article.getValue().getPrixHT()*1.2));
+                prixUnitaireTTC = article.getValue().getPrixHT()*1.2;
             }
             listPrixUnitaireTTC.put(article.getKey(), prixUnitaireTTC);
         }
@@ -70,7 +75,7 @@ public class Panier {
         for (Map.Entry<Long,Double> prixTTC: listPrixUnitaireTTC.entrySet()) {
             prixUnitaireTTC += prixTTC.getValue();
         }
-        totalTTC = Double.parseDouble(df.format(prixUnitaireTTC));
+        totalTTC = prixUnitaireTTC;
     }
 
 
@@ -79,9 +84,9 @@ public class Panier {
             double prixUnitaireTTC;
 
             if(article.getValue().getTauxTVA()==550){
-                prixUnitaireTTC = Double.parseDouble(df.format(article.getValue().getPrixHT()*0.055));
+                prixUnitaireTTC = article.getValue().getPrixHT()*0.055;
             }else{
-                prixUnitaireTTC = Double.parseDouble(df.format(article.getValue().getPrixHT()*0.2));
+                prixUnitaireTTC = article.getValue().getPrixHT()*0.2;
             }
             listMontantTauxTVA.put(article.getKey(), prixUnitaireTTC);
         }
