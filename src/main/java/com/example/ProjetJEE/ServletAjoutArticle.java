@@ -1,6 +1,7 @@
 package com.example.ProjetJEE;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -20,17 +21,18 @@ public class ServletAjoutArticle extends HttpServlet {
         int prixHT = Integer.parseInt(request.getParameter("prixHT"));
         int tauxTVA = Integer.parseInt(request.getParameter("tauxTVA"));
         Article article = new Article(codeBarre, prenom, numeroVol, prixHT, tauxTVA);
-        HttpSession session = request.getSession(true);
+        HttpSession session = request.getSession(true); // a supprimer
+        ServletContext context = this.getServletContext();
         if(session.getAttribute("listeArticle") != null){
             listeArticle = (ArrayList<Article>) session.getAttribute("listeArticle");
             listeArticle.add(article);
-            session.setAttribute("listeArticle",listeArticle);
+            context.setAttribute("listeArticle",listeArticle);
         }else{
             listeArticle.add(article);
-            session.setAttribute("listeArticle",listeArticle);
+            context.setAttribute("listeArticle",listeArticle);
         }
 
-        request.setAttribute("listeArticleHtml",listeArticle);
+        context.setAttribute("listeArticleHtml",listeArticle);
 
         RequestDispatcher rd =
                 this.getServletContext()
